@@ -1,0 +1,24 @@
+apply plugin: "org.springframework.boot"
+
+bootJar {
+    enabled(false)
+}
+
+jar {
+    enabled(true)
+}
+
+dependencies {
+    testImplementation(project(":application"))
+    testImplementation(project(":application").sourceSets.test.output)
+    testImplementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    testImplementation("org.springframework.boot:spring-boot-starter-web")
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+    }
+    testImplementation("io.rest-assured:rest-assured:$restAssuredVersion") {
+        exclude group: "com.sun.xml.bind", module: "jaxb-osgi"
+    }
+    testImplementation("com.github.dzieciou.testing:curl-logger:$restAssuredCurlLoggerVersion")
+    testImplementation("ch.qos.logback:logback-classic:$logbackVersion")
+}

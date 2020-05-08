@@ -12,3 +12,6 @@ pluginManagement {
 }
 
 rootProject.name = 'gradle-spring-boot'
+
+include ":application"
+include ":integration-test"
