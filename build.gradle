@@ -10,7 +10,6 @@ sourceCompatibility = "$javaVersion"
 
 allprojects {
 	apply plugin: "java"
-	apply plugin: "io.spring.dependency-management"
 
 	configurations {
 		developmentOnly
