@@ -9,12 +9,20 @@ jar {
     enabled(true)
 }
 
+bootRun {
+    enabled(false)
+}
+
 dependencies {
+    // dependencies needed to start Spring Boot application
     testImplementation(project(":application").sourceSets.main.output)
-    testImplementation(project(":application").sourceSets.test.output)
     testImplementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     testImplementation("org.springframework.boot:spring-boot-starter-web")
 
+    // project test dependencies
+    testImplementation(project(":application").sourceSets.test.output)
+
+    // external test dependencies
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude group: "org.junit.vintage", module: "junit-vintage-engine"
     }
