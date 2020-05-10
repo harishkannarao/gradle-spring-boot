@@ -20,7 +20,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-web")
 
     // project test dependencies
-    testImplementation(project(":application").sourceSets.test.output)
+    testImplementation(project(":test-common").sourceSets.test.output)
 
     // external test dependencies
     testImplementation("org.springframework.boot:spring-boot-starter-test") {

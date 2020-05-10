@@ -1,0 +1,9 @@
+test.enabled = false
+
+dependencies {
+    testImplementation(project(":application").sourceSets.main.output)
+
+    testImplementation("io.rest-assured:rest-assured:$restAssuredVersion") {
+        exclude group: "com.sun.xml.bind", module: "jaxb-osgi"
+    }
+}
