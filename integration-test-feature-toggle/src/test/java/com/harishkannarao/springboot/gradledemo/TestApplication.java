@@ -10,10 +10,12 @@ import java.util.stream.Stream;
 
 public class TestApplication {
 
+    public static final TestApplication INSTANCE = new TestApplication();
+
     private ConfigurableApplicationContext applicationContext;
     private boolean runningWithDefaultProperties = false;
 
-    public TestApplication() {
+    private TestApplication() {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             if (applicationContext != null && applicationContext.isRunning()) {
                 applicationContext.stop();
@@ -41,10 +43,6 @@ public class TestApplication {
 
     public ConfigurableApplicationContext getApplicationContext() {
         return applicationContext;
-    }
-
-    public Environment getEnvironment() {
-        return applicationContext.getEnvironment();
     }
 
     private void stop() {
