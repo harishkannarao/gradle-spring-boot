@@ -10,7 +10,7 @@ jar {
 }
 
 dependencies {
-    testImplementation(project(":application"))
+    testImplementation(project(":application").sourceSets.main.output)
     testImplementation(project(":application").sourceSets.test.output)
     testImplementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     testImplementation("org.springframework.boot:spring-boot-starter-web")
