@@ -18,6 +18,7 @@ dependencies {
     testImplementation(project(":application").sourceSets.main.output)
     testImplementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     testImplementation("org.springframework.boot:spring-boot-starter-web")
+    testImplementation("net.rakugakibox.spring.boot:logback-access-spring-boot-starter:$logbackAccessVersion")
 
     // project test dependencies
     testImplementation(project(":test-common").sourceSets.test.output)
