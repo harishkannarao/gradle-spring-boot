@@ -1,4 +1,4 @@
-package com.harishkannarao.springboot.gradledemo;
+package com.harishkannarao.springboot.gradledemo.test;
 
 import com.harishkannarao.springboot.gradledemo.common.api.client.StaticFileClient;
 import io.restassured.path.xml.XmlPath;

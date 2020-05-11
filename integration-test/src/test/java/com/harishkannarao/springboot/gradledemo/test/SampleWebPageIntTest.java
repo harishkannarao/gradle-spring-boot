@@ -1,10 +1,9 @@
-package com.harishkannarao.springboot.gradledemo;
+package com.harishkannarao.springboot.gradledemo.test;
 
 import com.harishkannarao.springboot.gradledemo.common.api.client.HomePageClient;
 import com.harishkannarao.springboot.gradledemo.common.api.client.SampleWebPageClient;
 import io.restassured.path.xml.XmlPath;
 import io.restassured.response.Response;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.path.xml.XmlPath.CompatibilityMode.HTML;

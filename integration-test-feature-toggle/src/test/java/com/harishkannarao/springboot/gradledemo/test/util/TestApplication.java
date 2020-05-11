@@ -1,5 +1,6 @@
-package com.harishkannarao.springboot.gradledemo;
+package com.harishkannarao.springboot.gradledemo.test.util;
 
+import com.harishkannarao.springboot.gradledemo.GradleDemoApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
