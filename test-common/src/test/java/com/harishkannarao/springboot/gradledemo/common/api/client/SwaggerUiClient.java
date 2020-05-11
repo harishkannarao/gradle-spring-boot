@@ -6,18 +6,18 @@ import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
 
-public class OpenApiClient {
+public class SwaggerUiClient {
 
     private final RequestSpecification requestSpecification;
 
-    public OpenApiClient(RequestSpecification requestSpecification) {
+    public SwaggerUiClient(RequestSpecification requestSpecification) {
         this.requestSpecification = requestSpecification;
     }
 
-    public Response getOpenApi() {
+    public Response getSwaggerUi() {
         return given()
                 .spec(requestSpecification)
-                .basePath("/api-docs")
+                .basePath("/swagger-ui.html")
                 .accept(ContentType.JSON)
                 .when()
                 .get();
