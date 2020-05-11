@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = {"/api/sample"})
-public class SampleRestController {
+public class SampleApiController {
 
     @GetMapping(path = {""}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<SampleResponseDto> getSampleResponse() {
