@@ -46,15 +46,12 @@ public class TestApplication {
 
     private void stop() {
         if (applicationContext != null && applicationContext.isRunning()) {
-            applicationContext.stop();
+            SpringApplication.exit(applicationContext);
         }
     }
 
     private void start(String[] args) {
-        applicationContext = SpringApplication.run(
-                GradleDemoApplication.class,
-                args
-        );
+        applicationContext = SpringApplication.run(GradleDemoApplication.class, args);
     }
 
     private List<String> createDefaultProperties() {
