@@ -1,0 +1,34 @@
+apply plugin: "org.springframework.boot"
+apply plugin: "io.spring.dependency-management"
+
+bootJar {
+    enabled(false)
+}
+
+jar {
+    enabled(true)
+}
+
+bootRun {
+    enabled(false)
+}
+
+dependencies {
+    // dependencies needed to start Spring Boot application
+    testImplementation(project(":application").sourceSets.main.output)
+    testImplementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    testImplementation("org.springframework.boot:spring-boot-starter-web")
+
+    // project test dependencies
+    testImplementation(project(":test-common").sourceSets.test.output)
+
+    // external test dependencies
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+    }
+    testImplementation("io.rest-assured:rest-assured:$restAssuredVersion") {
+        exclude group: "com.sun.xml.bind", module: "jaxb-osgi"
+    }
+    testImplementation("com.github.dzieciou.testing:curl-logger:$restAssuredCurlLoggerVersion")
+    testImplementation("ch.qos.logback:logback-classic:$logbackVersion")
+}

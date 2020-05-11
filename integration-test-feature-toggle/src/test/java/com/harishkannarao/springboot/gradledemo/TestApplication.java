@@ -2,7 +2,6 @@ package com.harishkannarao.springboot.gradledemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.core.env.Environment;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -60,7 +59,7 @@ public class TestApplication {
 
     private List<String> createDefaultProperties() {
         return List.of(
-                "spring.profiles.active=local,integration-test"
+                "spring.profiles.active=local,integration-test-feature-toggle"
         );
     }
 

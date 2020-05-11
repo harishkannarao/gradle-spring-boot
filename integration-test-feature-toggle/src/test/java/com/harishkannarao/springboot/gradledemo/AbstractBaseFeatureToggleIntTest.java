@@ -5,7 +5,7 @@ import org.springframework.beans.BeansException;
 
 import java.util.List;
 
-public abstract class AbstractBaseIntTest {
+public abstract class AbstractBaseFeatureToggleIntTest {
 
     @BeforeEach
     void globalSetUp() {

@@ -8,19 +8,19 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-class GradleDemoApplicationAltIntTest extends AbstractBaseIntTest {
+class GradleDemoApplicationAltIntTest extends AbstractBaseFeatureToggleIntTest {
 
 	@Test
 	void contextLoads() {
 		restartWithProperties(
 				List.of(
-					"server.port=8083"
+					"server.port=8084"
 				)
 		);
 
 		Environment environment = getBean(Environment.class);
 		Integer port = environment.getProperty("server.port", Integer.class);
-		assertThat(port, equalTo(8083));
+		assertThat(port, equalTo(8084));
 	}
 
 }

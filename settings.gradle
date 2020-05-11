@@ -15,4 +15,5 @@ rootProject.name = 'gradle-spring-boot'
 
 include ":application"
 include ":test-common"
+include ":integration-test"
 include ":integration-test-feature-toggle"
