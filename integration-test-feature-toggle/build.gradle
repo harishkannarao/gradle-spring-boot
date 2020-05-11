@@ -19,6 +19,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     testImplementation("org.springframework.boot:spring-boot-starter-web")
     testImplementation("net.rakugakibox.spring.boot:logback-access-spring-boot-starter:$logbackAccessVersion")
+    testImplementation("org.springdoc:springdoc-openapi-ui:$springDocVersion")
 
     // project test dependencies
     testImplementation(project(":test-common").sourceSets.test.output)

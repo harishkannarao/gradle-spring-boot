@@ -5,6 +5,13 @@ spring:
   profiles:
     active: "local"
 
+springdoc:
+  api-docs:
+    path: "/api-docs"
+    enabled: false
+  swagger-ui:
+    path: "/swagger-ui.html"
+
 logging:
   pattern:
     console: '%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m %wEx %n'
