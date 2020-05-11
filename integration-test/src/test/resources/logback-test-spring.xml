@@ -10,6 +10,16 @@
         </encoder>
     </appender>
 
+    <appender name="CURLLOGGER_STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="curl" level="DEBUG" additivity="false">
+        <appender-ref ref="CURLLOGGER_STDOUT"/>
+    </logger>
+
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
     </root>

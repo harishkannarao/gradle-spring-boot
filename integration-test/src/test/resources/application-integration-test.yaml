@@ -1,2 +1,6 @@
 server:
   port: 8082
+
+test:
+  application:
+    url: "http://localhost:${server.port}"
