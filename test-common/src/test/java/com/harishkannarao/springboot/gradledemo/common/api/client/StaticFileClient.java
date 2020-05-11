@@ -18,7 +18,6 @@ public class StaticFileClient {
         return given()
                 .spec(requestSpecification)
                 .basePath(path)
-                .accept(ContentType.JSON)
                 .when()
                 .get();
     }
