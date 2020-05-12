@@ -1,0 +1,51 @@
+name: 'CI-master'
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  master-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 420 # default 360
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: '1'
+        ref: 'master'
+    - name: Install Java 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: '11'
+        java-package: jdk
+        architecture: x64
+    - name: Cache gradle dependencies
+      uses: actions/cache@v1
+      with:
+        path: ~/.gradle
+        key: ${{ runner.os }}-gradle-cache-master-v1
+        restore-keys: |
+          ${{ runner.os }}-gradle-cache-master-v1
+    - name: 'CI Build Command'
+      timeout-minutes: 20
+      run: |
+        ./ci-build.sh
+    - name: Archive unit test results
+      uses: actions/upload-artifact@v1
+      if: ${{ always() }}
+      with:
+        name: unit-test-results
+        path: application/build/reports/tests
+    - name: Archive integration test results
+      uses: actions/upload-artifact@v1
+      if: ${{ always() }}
+      with:
+        name: integration-test-results
+        path: integration-test/build/reports/tests
+    - name: Archive feature toggle integration test results
+      uses: actions/upload-artifact@v1
+      if: ${{ always() }}
+      with:
+        name: feature-toggle-integration-test-results
+        path: integration-test-feature-toggle/build/reports/tests
