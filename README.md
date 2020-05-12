@@ -5,7 +5,7 @@ This repository is to show sample of multi-module spring boot application with G
 ## Github Actions Build status
 [![Build Status](https://github.com/harishkannarao/gradle-spring-boot/workflows/CI-master/badge.svg)](https://github.com/harishkannarao/gradle-spring-boot/actions?query=workflow%3ACI-master)
 
-## Required Softwares, Tools and Version
+## Required Software, Tools and Version
 * Java JDK Version: 11 Adopt OpenJDK (`java -version`)
 * Git Client: Any latest version (`git --version`)
 * Integrated Development Environment: Any version of IntelliJ Idea or Eclipse
@@ -18,7 +18,7 @@ This repository is to show sample of multi-module spring boot application with G
 
     ./gradlew clean bootRun
     
-Open the app in the browser
+Open the urls in the browser
 
     http://localhost:8081
     
