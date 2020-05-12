@@ -1,6 +1,5 @@
 plugins {
 	id "org.springframework.boot" apply false
-	id "io.spring.dependency-management" apply false
 	id "java"
 }
 
@@ -10,13 +9,6 @@ sourceCompatibility = "$javaVersion"
 
 allprojects {
 	apply plugin: "java"
-
-	configurations {
-		developmentOnly
-		runtimeClasspath {
-			extendsFrom developmentOnly
-		}
-	}
 
 	repositories {
 		mavenCentral()

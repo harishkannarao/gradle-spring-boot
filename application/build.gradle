@@ -1,5 +1,4 @@
 apply plugin: "org.springframework.boot"
-apply plugin: "io.spring.dependency-management"
 
 bootJar {
 	enabled(true)
@@ -12,8 +11,8 @@ jar {
 
 dependencies {
 	// application dependencies
-	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
-	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-thymeleaf:$springBootVersion")
+	implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
 	implementation("net.rakugakibox.spring.boot:logback-access-spring-boot-starter:$logbackAccessVersion")
 	implementation("org.springdoc:springdoc-openapi-ui:$springDocVersion")
 
@@ -21,7 +20,7 @@ dependencies {
 	testImplementation(project(":test-common").sourceSets.test.output)
 
 	// external test dependencies
-	testImplementation("org.springframework.boot:spring-boot-starter-test") {
+	testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion") {
 		exclude group: "org.junit.vintage", module: "junit-vintage-engine"
 	}
 }
