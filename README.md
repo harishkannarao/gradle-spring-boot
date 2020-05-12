@@ -18,6 +18,14 @@ This repository is to show sample of multi-module spring boot application with G
 
     ./gradlew clean bootRun
     
+Open the app in the browser
+
+    http://localhost:8081
+    
+    http://localhost:8081/swagger-ui.html
+    
+    http://localhost:8081/api-docs
+    
 ## Run the jar file
 
     java -jar application/build/libs/application.jar
