@@ -1,13 +1,7 @@
 package com.harishkannarao.springboot.gradledemo.test;
 
-import com.github.dzieciou.testing.curl.CurlLoggingRestAssuredConfigFactory;
+import com.harishkannarao.springboot.gradledemo.common.restassured.RestAssuredFactory;
 import com.harishkannarao.springboot.gradledemo.test.util.TestApplication;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.config.RedirectConfig;
-import io.restassured.config.RestAssuredConfig;
-import io.restassured.filter.log.LogDetail;
-import io.restassured.filter.log.RequestLoggingFilter;
-import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -46,27 +40,15 @@ public abstract class AbstractBaseFeatureToggleIntTest {
         return TestApplication.INSTANCE.getApplicationContext().getBean(requiredType);
     }
 
+    public String testApplicationUrl() {
+        return getBean(Environment.class).getRequiredProperty("test.application.url");
+    }
+
     protected RequestSpecification createRequestSpec() {
         return createRequestSpec(true);
     }
 
     protected RequestSpecification createRequestSpec(boolean followRedirect) {
-        String testApplicationUrl = getBean(Environment.class).getRequiredProperty("test.application.url");
-        return new RequestSpecBuilder()
-                .setBaseUri(testApplicationUrl)
-                .setConfig(createRestAssuredConfig(followRedirect))
-                .addFilter(new RequestLoggingFilter(LogDetail.ALL))
-                .addFilter(new ResponseLoggingFilter(LogDetail.ALL))
-                .build();
-    }
-
-    private RestAssuredConfig createRestAssuredConfig(boolean followRedirect) {
-        RestAssuredConfig restAssuredConfig = RestAssuredConfig.config()
-                .redirect(createRedirectConfig(followRedirect));
-        return CurlLoggingRestAssuredConfigFactory.updateConfig(restAssuredConfig);
-    }
-
-    private RedirectConfig createRedirectConfig(boolean followRedirect) {
-        return RedirectConfig.redirectConfig().followRedirects(followRedirect);
+        return RestAssuredFactory.createRequestSpec(testApplicationUrl(), followRedirect);
     }
 }

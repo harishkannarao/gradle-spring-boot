@@ -19,6 +19,10 @@ dependencies {
     testImplementation("io.rest-assured:rest-assured:$restAssuredVersion") {
         exclude group: "com.sun.xml.bind", module: "jaxb-osgi"
     }
-    testImplementation("com.github.dzieciou.testing:curl-logger:$restAssuredCurlLoggerVersion")
+    testImplementation("com.github.dzieciou.testing:curl-logger:$restAssuredCurlLoggerVersion") {
+        exclude module: 'slf4j-api'
+    }
     testImplementation("ch.qos.logback:logback-classic:$logbackVersion")
+    testImplementation("ch.qos.logback:logback-core:$logbackVersion")
+    testImplementation("org.slf4j:slf4j-api:$slf4jVersion")
 }

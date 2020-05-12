@@ -1,12 +1,6 @@
 package com.harishkannarao.springboot.gradledemo.test;
 
-import com.github.dzieciou.testing.curl.CurlLoggingRestAssuredConfigFactory;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.config.RedirectConfig;
-import io.restassured.config.RestAssuredConfig;
-import io.restassured.filter.log.LogDetail;
-import io.restassured.filter.log.RequestLoggingFilter;
-import io.restassured.filter.log.ResponseLoggingFilter;
+import com.harishkannarao.springboot.gradledemo.common.restassured.RestAssuredFactory;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -43,21 +37,6 @@ public abstract class AbstractBaseIntTest {
     }
 
     protected RequestSpecification createRequestSpec(boolean followRedirect) {
-        return new RequestSpecBuilder()
-                .setBaseUri(testApplicationUrl)
-                .setConfig(createRestAssuredConfig(followRedirect))
-                .addFilter(new RequestLoggingFilter(LogDetail.ALL))
-                .addFilter(new ResponseLoggingFilter(LogDetail.ALL))
-                .build();
-    }
-
-    private RestAssuredConfig createRestAssuredConfig(boolean followRedirect) {
-        RestAssuredConfig restAssuredConfig = RestAssuredConfig.config()
-                .redirect(createRedirectConfig(followRedirect));
-        return CurlLoggingRestAssuredConfigFactory.updateConfig(restAssuredConfig);
-    }
-
-    private RedirectConfig createRedirectConfig(boolean followRedirect) {
-        return RedirectConfig.redirectConfig().followRedirects(followRedirect);
+        return RestAssuredFactory.createRequestSpec(testApplicationUrl, followRedirect);
     }
 }
