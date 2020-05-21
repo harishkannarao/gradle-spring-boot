@@ -18,7 +18,6 @@ public class SwaggerUiClient {
         return given()
                 .spec(requestSpecification)
                 .basePath("/swagger-ui.html")
-                .when()
                 .get();
     }
 }

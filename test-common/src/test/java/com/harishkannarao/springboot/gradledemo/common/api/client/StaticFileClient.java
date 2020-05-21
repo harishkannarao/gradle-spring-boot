@@ -18,7 +18,6 @@ public class StaticFileClient {
         return given()
                 .spec(requestSpecification)
                 .basePath(path)
-                .when()
                 .get();
     }
 }

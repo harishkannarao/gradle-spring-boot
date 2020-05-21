@@ -15,6 +15,8 @@ dependencies {
     // external test dependencies
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junit5Version")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
+    testCompileOnly("org.immutables:value:$immutablesVersion")
+    testAnnotationProcessor("org.immutables:value:$immutablesVersion")
     testImplementation("org.hamcrest:hamcrest:$hamcrestVersion")
     testImplementation("io.rest-assured:rest-assured:$restAssuredVersion") {
         exclude group: "com.sun.xml.bind", module: "jaxb-osgi"

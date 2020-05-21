@@ -19,7 +19,6 @@ public class SampleApiClient {
                 .spec(requestSpecification)
                 .basePath("/api/sample")
                 .accept(ContentType.JSON)
-                .when()
                 .get();
     }
 }

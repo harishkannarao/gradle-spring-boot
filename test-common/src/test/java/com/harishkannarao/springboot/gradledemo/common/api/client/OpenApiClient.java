@@ -19,7 +19,6 @@ public class OpenApiClient {
                 .spec(requestSpecification)
                 .basePath("/api-docs")
                 .accept(ContentType.JSON)
-                .when()
                 .get();
     }
 }

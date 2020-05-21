@@ -17,7 +17,6 @@ public class SampleWebPageClient {
         return given()
                 .spec(requestSpecification)
                 .basePath("/web/sample")
-                .when()
                 .get();
     }
 }

@@ -17,7 +17,6 @@ public class HomePageClient {
         return given()
                 .spec(requestSpecification)
                 .basePath("")
-                .when()
                 .get();
     }
 }
