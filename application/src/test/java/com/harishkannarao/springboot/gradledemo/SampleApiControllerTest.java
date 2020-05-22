@@ -16,6 +16,6 @@ public class SampleApiControllerTest {
     void verify_response() {
         ResponseEntity<SampleResponseDto> result = underTest.getSampleResponse();
         assertThat(result.getStatusCodeValue(), equalTo(200));
-        assertThat(result.getBody().getMessage(), equalTo("My Sample Api Message"));
+        assertThat(result.getBody().message(), equalTo("My Sample Api Message"));
     }
 }
