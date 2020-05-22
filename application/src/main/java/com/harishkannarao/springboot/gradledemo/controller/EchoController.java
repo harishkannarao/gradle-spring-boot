@@ -1,6 +1,6 @@
 package com.harishkannarao.springboot.gradledemo.controller;
 
-import com.harishkannarao.springboot.gradledemo.dto.Echo;
+import com.harishkannarao.springboot.gradledemo.dto.EchoDto;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,11 +16,11 @@ import java.util.stream.Collectors;
 public class EchoController {
 
     @PostMapping(path = {""}, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<List<Echo>> echo(
-            @RequestBody List<Echo> input
+    public ResponseEntity<List<EchoDto>> echo(
+            @RequestBody List<EchoDto> input
     ) {
-        List<Echo> output = input.stream()
-                .map(echo -> (Echo) Echo.builder()
+        List<EchoDto> output = input.stream()
+                .map(echo -> EchoDto.builder()
                         .intProperty(Integer.parseInt(echo.intAsString()))
                         .stringProperty(echo.stringProperty())
                         .build()

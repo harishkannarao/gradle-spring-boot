@@ -1,12 +1,9 @@
 package com.harishkannarao.springboot.gradledemo.common.api.client;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.harishkannarao.springboot.gradledemo.common.api.client.dto.EchoTestDto;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.immutables.value.Value;
 
 import java.util.List;
 
@@ -20,7 +17,7 @@ public class EchoApiClient {
         this.requestSpecification = requestSpecification;
     }
 
-    public Response post(List<TestEcho> input) {
+    public Response post(List<EchoTestDto> input) {
         return given()
                 .spec(requestSpecification)
                 .basePath("/api/echo")
@@ -30,15 +27,4 @@ public class EchoApiClient {
                 .post();
     }
 
-    @Value.Immutable
-    @JsonSerialize(as = ImmutableTestEcho.class)
-    @JsonDeserialize(as = ImmutableTestEcho.class)
-    public interface TestEcho {
-        int intProperty();
-        @JsonProperty("string_property") String stringProperty();
-
-        static ImmutableTestEcho.Builder builder() {
-            return ImmutableTestEcho.builder();
-        }
-    }
 }
