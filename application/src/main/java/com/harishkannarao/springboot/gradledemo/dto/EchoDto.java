@@ -15,7 +15,7 @@ import java.util.Set;
 @Value.Immutable
 @JsonSerialize(as = ImmutableEchoDto.class)
 @JsonDeserialize(as = ImmutableEchoDto.class)
-public abstract class EchoDto {
+public abstract class EchoDto implements WithEchoDto {
     public abstract int intProperty();
     @JsonProperty("string_property")
     public abstract String stringProperty();

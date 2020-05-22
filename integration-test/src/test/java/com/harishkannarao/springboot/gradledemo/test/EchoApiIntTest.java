@@ -29,12 +29,11 @@ class EchoApiIntTest extends AbstractBaseIntTest {
 				.bigDecimal(new BigDecimal("20.01"))
 				.dateTime(OffsetDateTime.now().withOffsetSameInstant(ZoneOffset.UTC))
 				.build();
-		EchoTestDto echo2 = EchoTestDto.builder()
-				.from(echo1)
-				.intProperty(2)
-				.stringProperty("String2")
-				.optionalString("optional-string2")
-				.addObjectList(
+		EchoTestDto echo2 = echo1
+				.withIntProperty(2)
+				.withStringProperty("String2")
+				.withOptionalString("optional-string2")
+				.withObjectList(
 						NestedEchoTestDto.builder()
 								.longProperty(3L)
 								.build(),
@@ -42,8 +41,7 @@ class EchoApiIntTest extends AbstractBaseIntTest {
 								.longProperty(4L)
 								.defaultStringProperty("overridden-default-value")
 								.build()
-				)
-				.build();
+				);
 		List<EchoTestDto> input = List.of(echo1, echo2);
 
 		Response response = new EchoApiClient(createRequestSpec())
