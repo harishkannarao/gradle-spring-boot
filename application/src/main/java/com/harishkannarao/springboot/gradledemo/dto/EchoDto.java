@@ -9,7 +9,7 @@ import org.immutables.value.Value;
 @Value.Immutable
 @JsonSerialize(as = ImmutableEchoDto.class)
 @JsonDeserialize(as = ImmutableEchoDto.class)
-public abstract class EchoDto implements WithEchoDto {
+public abstract class EchoDto {
     public abstract int intProperty();
     @JsonProperty("string_property")
     public abstract String stringProperty();

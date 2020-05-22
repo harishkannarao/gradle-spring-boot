@@ -18,9 +18,10 @@ class EchoApiIntTest extends AbstractBaseIntTest {
 				.intProperty(1)
 				.stringProperty("String1")
 				.build();
-		EchoTestDto echo2 = echo1
-				.withIntProperty(2)
-				.withStringProperty("String2");
+		EchoTestDto echo2 = EchoTestDto.builder()
+				.intProperty(2)
+				.stringProperty("String2")
+				.build();
 		List<EchoTestDto> input = List.of(echo1, echo2);
 
 		Response response = new EchoApiClient(createRequestSpec())
