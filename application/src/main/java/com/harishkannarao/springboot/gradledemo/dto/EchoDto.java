@@ -1,5 +1,6 @@
 package com.harishkannarao.springboot.gradledemo.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -16,24 +17,25 @@ import java.util.Set;
 @JsonSerialize(as = ImmutableEchoDto.class)
 @JsonDeserialize(as = ImmutableEchoDto.class)
 public abstract class EchoDto implements WithEchoDto {
-    public abstract int intProperty();
+    public abstract int getIntProperty();
     @JsonProperty("string_property")
-    public abstract String stringProperty();
-    public abstract Optional<String> optionalString();
-    public abstract List<String> primitiveList();
-    public abstract Set<String> primitiveSet();
-    public abstract OffsetDateTime dateTime();
-    public abstract BigDecimal bigDecimal();
-    public abstract List<NestedEchoDto> objectList();
+    public abstract String getStringProperty();
+    public abstract Optional<String> getOptionalString();
+    public abstract List<String> getPrimitiveList();
+    public abstract Set<String> getPrimitiveSet();
+    public abstract OffsetDateTime getDateTime();
+    public abstract BigDecimal getBigDecimal();
+    public abstract List<NestedEchoDto> getObjectList();
 
-    public String intAsString() {
-        return String.valueOf(intProperty());
+    @JsonIgnore
+    public String getIntAsString() {
+        return String.valueOf(getIntProperty());
     }
 
     @SuppressWarnings("Convert2MethodRef")
     @JsonProperty("constructed_property")
-    public Optional<String> constructedProperty() {
-        return optionalString()
+    public Optional<String> getConstructedProperty() {
+        return getOptionalString()
                 .map(s -> "Constructed::".concat(s));
     }
 

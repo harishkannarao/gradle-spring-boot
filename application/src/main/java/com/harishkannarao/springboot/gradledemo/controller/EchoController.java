@@ -22,7 +22,7 @@ public class EchoController {
         List<EchoDto> output = input.stream()
                 .map(echo -> EchoDto.builder()
                         .from(echo)
-                        .intProperty(Integer.parseInt(echo.intAsString()))
+                        .intProperty(Integer.parseInt(echo.getIntAsString()))
                         .build()
                 )
                 .collect(Collectors.toList());
