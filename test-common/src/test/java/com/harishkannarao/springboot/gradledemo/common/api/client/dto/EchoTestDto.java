@@ -21,6 +21,8 @@ public abstract class EchoTestDto implements WithEchoTestDto {
     @JsonProperty("string_property")
     public abstract String stringProperty();
     public abstract Optional<String> optionalString();
+    @JsonProperty("constructed_property")
+    public abstract Optional<String> constructedOptionalString();
     public abstract List<String> primitiveList();
     public abstract Set<String> primitiveSet();
     public abstract String dateTime();

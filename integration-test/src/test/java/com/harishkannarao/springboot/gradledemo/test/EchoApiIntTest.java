@@ -58,11 +58,13 @@ class EchoApiIntTest extends AbstractBaseIntTest {
 		assertThat(actualEcho1.bigDecimal(), equalTo(new BigDecimal("20.01")));
 		assertThat(actualEcho1.typedDateTime(), equalTo(echo1.typedDateTime()));
 		assertThat(actualEcho1.optionalString(), equalTo(Optional.empty()));
+		assertThat(actualEcho1.constructedOptionalString(), equalTo(Optional.empty()));
 		assertThat(actualEcho1.primitiveList(), containsInAnyOrder("list1", "list2"));
 		assertThat(actualEcho1.primitiveSet(), containsInAnyOrder("set1", "set2"));
 		assertThat(actualEcho1.objectList(), empty());
 
 		assertThat(actualEcho2.optionalString(), equalTo(Optional.of("optional-string2")));
+		assertThat(actualEcho2.constructedOptionalString(), equalTo(Optional.of("Constructed::optional-string2")));
 		Map<Long, NestedEchoTestDto> nestedEchoTestDtoMap = actualEcho2.objectList().stream().collect(Collectors.toMap(NestedEchoTestDto::longProperty, dto -> dto));
 		NestedEchoTestDto nestedEchoTestDto1 = nestedEchoTestDtoMap.get(3L);
 		NestedEchoTestDto nestedEchoTestDto2 = nestedEchoTestDtoMap.get(4L);

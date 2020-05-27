@@ -30,6 +30,13 @@ public abstract class EchoDto implements WithEchoDto {
         return String.valueOf(intProperty());
     }
 
+    @SuppressWarnings("Convert2MethodRef")
+    @JsonProperty("constructed_property")
+    public Optional<String> constructedProperty() {
+        return optionalString()
+                .map(s -> "Constructed::".concat(s));
+    }
+
     public static class Builder extends ImmutableEchoDto.Builder {}
 
     public static Builder builder() {
