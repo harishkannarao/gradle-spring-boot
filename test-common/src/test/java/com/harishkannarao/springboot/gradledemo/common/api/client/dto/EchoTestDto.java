@@ -19,7 +19,7 @@ import java.util.Set;
 public abstract class EchoTestDto implements WithEchoTestDto {
     public abstract int intProperty();
     @JsonProperty("string_property")
-    public abstract String stringProperty();
+    public abstract Optional<String> stringProperty();
     public abstract Optional<String> optionalString();
     @JsonProperty("constructed_property")
     public abstract Optional<String> constructedOptionalString();

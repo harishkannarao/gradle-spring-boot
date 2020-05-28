@@ -1,6 +1,5 @@
-package com.harishkannarao.springboot.gradledemo;
+package com.harishkannarao.springboot.gradledemo.controller;
 
-import com.harishkannarao.springboot.gradledemo.controller.SampleApiController;
 import com.harishkannarao.springboot.gradledemo.dto.SampleResponseDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;

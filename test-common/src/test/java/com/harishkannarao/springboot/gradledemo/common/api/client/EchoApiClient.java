@@ -17,10 +17,10 @@ public class EchoApiClient {
         this.requestSpecification = requestSpecification;
     }
 
-    public Response post(List<EchoTestDto> input) {
+    public Response post(String id, List<EchoTestDto> input) {
         return given()
                 .spec(requestSpecification)
-                .basePath("/api/echo")
+                .basePath("/api/echo/".concat(id))
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
                 .body(input)

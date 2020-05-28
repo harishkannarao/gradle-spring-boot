@@ -6,6 +6,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -19,13 +22,14 @@ import java.util.Set;
 public abstract class EchoDto implements WithEchoDto {
     public abstract int getIntProperty();
     @JsonProperty("string_property")
-    public abstract String getStringProperty();
+    public abstract Optional<@NotBlank(message = "string_property::must not be blank") String> getStringProperty();
     public abstract Optional<String> getOptionalString();
+    @NotEmpty
     public abstract List<String> getPrimitiveList();
     public abstract Set<String> getPrimitiveSet();
     public abstract OffsetDateTime getDateTime();
     public abstract BigDecimal getBigDecimal();
-    public abstract List<NestedEchoDto> getObjectList();
+    public abstract List<@Valid NestedEchoDto> getObjectList();
 
     @JsonIgnore
     public String getIntAsString() {

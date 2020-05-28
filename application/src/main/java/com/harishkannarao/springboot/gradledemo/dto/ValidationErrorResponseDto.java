@@ -4,21 +4,19 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
 
-import javax.validation.constraints.PositiveOrZero;
+import java.util.List;
 
 @Value.Style(visibility = Value.Style.ImplementationVisibility.PACKAGE, overshadowImplementation = true)
 @Value.Immutable
-@JsonSerialize(as = ImmutableNestedEchoDto.class)
-@JsonDeserialize(as = ImmutableNestedEchoDto.class)
-public abstract class NestedEchoDto {
-    @PositiveOrZero
-    public abstract Long getLongProperty();
-    @Value.Default
-    public String getDefaultStringProperty(){
-        return "defaultValue";
+@JsonSerialize(as = ImmutableValidationErrorResponseDto.class)
+@JsonDeserialize(as = ImmutableValidationErrorResponseDto.class)
+public abstract class ValidationErrorResponseDto {
+    public abstract List<ValidationErrorDto> getValidationErrors();
+    public String getMessage() {
+        return "Validation Error";
     }
 
-    public static class Builder extends ImmutableNestedEchoDto.Builder {}
+    public static class Builder extends ImmutableValidationErrorResponseDto.Builder {}
 
     public static Builder builder() {
         return new Builder();
