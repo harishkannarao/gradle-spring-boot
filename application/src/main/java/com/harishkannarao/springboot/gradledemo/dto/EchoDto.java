@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-@Value.Style(visibility = Value.Style.ImplementationVisibility.PACKAGE, overshadowImplementation = true)
+@Value.Style(overshadowImplementation = true)
 @Value.Immutable
 @JsonSerialize(as = ImmutableEchoDto.class)
 @JsonDeserialize(as = ImmutableEchoDto.class)
@@ -43,9 +43,7 @@ public abstract class EchoDto implements WithEchoDto {
                 .map(s -> "Constructed::".concat(s));
     }
 
-    public static class Builder extends ImmutableEchoDto.Builder {}
-
-    public static Builder builder() {
-        return new Builder();
+    public static ImmutableEchoDto.Builder builder() {
+        return ImmutableEchoDto.builder();
     }
 }

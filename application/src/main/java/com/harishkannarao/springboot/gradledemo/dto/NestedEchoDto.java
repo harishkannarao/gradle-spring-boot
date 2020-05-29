@@ -6,7 +6,7 @@ import org.immutables.value.Value;
 
 import javax.validation.constraints.PositiveOrZero;
 
-@Value.Style(visibility = Value.Style.ImplementationVisibility.PACKAGE, overshadowImplementation = true)
+@Value.Style(overshadowImplementation = true)
 @Value.Immutable
 @JsonSerialize(as = ImmutableNestedEchoDto.class)
 @JsonDeserialize(as = ImmutableNestedEchoDto.class)
@@ -18,9 +18,7 @@ public abstract class NestedEchoDto {
         return "defaultValue";
     }
 
-    public static class Builder extends ImmutableNestedEchoDto.Builder {}
-
-    public static Builder builder() {
-        return new Builder();
+    public static ImmutableNestedEchoDto.Builder builder() {
+        return ImmutableNestedEchoDto.builder();
     }
 }

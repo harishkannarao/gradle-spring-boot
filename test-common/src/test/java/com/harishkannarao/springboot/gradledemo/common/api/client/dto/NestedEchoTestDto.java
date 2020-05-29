@@ -6,7 +6,7 @@ import org.immutables.value.Value;
 
 import java.util.Optional;
 
-@Value.Style(visibility = Value.Style.ImplementationVisibility.PACKAGE, overshadowImplementation = true)
+@Value.Style(overshadowImplementation = true)
 @Value.Immutable
 @JsonSerialize(as = ImmutableNestedEchoTestDto.class)
 @JsonDeserialize(as = ImmutableNestedEchoTestDto.class)
@@ -14,9 +14,7 @@ public abstract class NestedEchoTestDto {
     public abstract Long longProperty();
     public abstract Optional<String> defaultStringProperty();
 
-    public static class Builder extends ImmutableNestedEchoTestDto.Builder {}
-
-    public static Builder builder() {
-        return new Builder();
+    public static ImmutableNestedEchoTestDto.Builder builder() {
+        return ImmutableNestedEchoTestDto.builder();
     }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-@Value.Style(visibility = Value.Style.ImplementationVisibility.PACKAGE, overshadowImplementation = true)
+@Value.Style(overshadowImplementation = true)
 @Value.Immutable
 @JsonSerialize(as = ImmutableEchoTestDto.class)
 @JsonDeserialize(as = ImmutableEchoTestDto.class)

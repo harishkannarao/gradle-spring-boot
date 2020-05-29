@@ -6,7 +6,7 @@ import org.immutables.value.Value;
 
 import java.util.List;
 
-@Value.Style(visibility = Value.Style.ImplementationVisibility.PACKAGE, overshadowImplementation = true)
+@Value.Style(overshadowImplementation = true)
 @Value.Immutable
 @JsonSerialize(as = ImmutableValidationErrorResponseDto.class)
 @JsonDeserialize(as = ImmutableValidationErrorResponseDto.class)
@@ -16,9 +16,7 @@ public abstract class ValidationErrorResponseDto {
         return "Validation Error";
     }
 
-    public static class Builder extends ImmutableValidationErrorResponseDto.Builder {}
-
-    public static Builder builder() {
-        return new Builder();
+    public static ImmutableValidationErrorResponseDto.Builder builder() {
+        return ImmutableValidationErrorResponseDto.builder();
     }
 }
