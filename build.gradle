@@ -1,6 +1,7 @@
 plugins {
-	id "org.springframework.boot" apply false
 	id "java"
+	id "org.springframework.boot" apply false
+	id "com.gorylenko.gradle-git-properties" apply false
 }
 
 group = "com.harishkannarao.springboot"

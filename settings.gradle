@@ -4,6 +4,9 @@ pluginManagement {
             if (requested.id.id == "org.springframework.boot") {
                 useVersion springBootVersion as String
             }
+            if (requested.id.id == "com.gorylenko.gradle-git-properties") {
+                useVersion gradleGitProperties as String
+            }
         }
     }
 }

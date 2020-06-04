@@ -1,8 +1,13 @@
 apply plugin: "org.springframework.boot"
+apply plugin: "com.gorylenko.gradle-git-properties"
 
 bootJar {
 	enabled(true)
 	classifier("")
+}
+
+gitProperties {
+	keys = ["git.commit.id","git.commit.time"]
 }
 
 jar {
@@ -11,13 +16,14 @@ jar {
 
 dependencies {
 	// application dependencies
-	compileOnly("org.immutables:value:$immutablesVersion")
-	annotationProcessor("org.immutables:value:$immutablesVersion")
-	implementation("org.springframework.boot:spring-boot-starter-thymeleaf:$springBootVersion")
 	implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+	implementation("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
+	implementation("org.springframework.boot:spring-boot-starter-thymeleaf:$springBootVersion")
 	implementation("org.springframework.boot:spring-boot-starter-validation:$springBootVersion")
 	implementation("net.rakugakibox.spring.boot:logback-access-spring-boot-starter:$logbackAccessVersion")
 	implementation("org.springdoc:springdoc-openapi-ui:$springDocVersion")
+	compileOnly("org.immutables:value:$immutablesVersion")
+	annotationProcessor("org.immutables:value:$immutablesVersion")
 
 	// project test dependencies
 	testImplementation(project(":test-common").sourceSets.test.output)
