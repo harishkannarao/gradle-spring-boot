@@ -6,7 +6,7 @@ plugins {
 
 group = "com.harishkannarao.springboot"
 version = ""
-sourceCompatibility = "$javaVersion"
+java.sourceCompatibility = JavaVersion.toVersion("$javaVersion")
 
 allprojects {
 	apply plugin: "java"
