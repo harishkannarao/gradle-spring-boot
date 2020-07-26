@@ -6,7 +6,7 @@ import org.immutables.value.Value;
 
 import java.util.Optional;
 
-@Value.Style(overshadowImplementation = true)
+@Value.Style(overshadowImplementation = true, jdkOnly = true)
 @Value.Immutable
 @JsonSerialize(as = ImmutableNestedEchoTestDto.class)
 @JsonDeserialize(as = ImmutableNestedEchoTestDto.class)

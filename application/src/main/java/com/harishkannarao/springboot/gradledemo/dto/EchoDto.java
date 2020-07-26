@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-@Value.Style(overshadowImplementation = true)
+@Value.Style(overshadowImplementation = true, jdkOnly = true)
 @Value.Immutable
 @JsonSerialize(as = ImmutableEchoDto.class)
 @JsonDeserialize(as = ImmutableEchoDto.class)

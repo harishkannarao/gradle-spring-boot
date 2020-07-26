@@ -6,7 +6,7 @@ import org.immutables.value.Value;
 
 import java.util.List;
 
-@Value.Style(overshadowImplementation = true)
+@Value.Style(overshadowImplementation = true, jdkOnly = true)
 @Value.Immutable
 @JsonSerialize(as = ImmutableValidationErrorResponseTestDto.class)
 @JsonDeserialize(as = ImmutableValidationErrorResponseTestDto.class)

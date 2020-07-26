@@ -6,7 +6,7 @@ import org.immutables.value.Value;
 
 import javax.validation.constraints.PositiveOrZero;
 
-@Value.Style(overshadowImplementation = true)
+@Value.Style(overshadowImplementation = true, jdkOnly = true)
 @Value.Immutable
 @JsonSerialize(as = ImmutableNestedEchoDto.class)
 @JsonDeserialize(as = ImmutableNestedEchoDto.class)
