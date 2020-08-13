@@ -1,17 +1,22 @@
 package com.harishkannarao.springboot.gradledemo.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.immutables.value.Value;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.google.auto.value.AutoValue;
 
-@Value.Style(overshadowImplementation = true, jdkOnly = true)
-@Value.Immutable
-@JsonSerialize(as = ImmutableSampleResponseDto.class)
-@JsonDeserialize(as = ImmutableSampleResponseDto.class)
+@AutoValue
+@JsonDeserialize(builder = AutoValue_SampleResponseDto.Builder.class)
 public abstract class SampleResponseDto {
-    public abstract String message();
+    public static Builder builder() {
+        return new AutoValue_SampleResponseDto.Builder();
+    }
 
-    public static ImmutableSampleResponseDto.Builder builder() {
-        return ImmutableSampleResponseDto.builder();
+    public abstract String getMessage();
+
+    @AutoValue.Builder
+    @JsonPOJOBuilder(withPrefix = "set")
+    public static abstract class Builder {
+        public abstract Builder setMessage(String value);
+        public abstract SampleResponseDto build();
     }
 }
