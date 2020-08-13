@@ -24,6 +24,8 @@ dependencies {
 	implementation("org.springdoc:springdoc-openapi-ui:$springDocVersion")
 	compileOnly("org.immutables:value:$immutablesVersion")
 	annotationProcessor("org.immutables:value:$immutablesVersion")
+	compileOnly("com.google.auto.value:auto-value-annotations:${autoValueVersion}")
+	annotationProcessor("com.google.auto.value:auto-value:${autoValueVersion}")
 
 	// project test dependencies
 	testImplementation(project(":test-common").sourceSets.test.output)
@@ -34,4 +36,6 @@ dependencies {
 	}
 	testCompileOnly("org.immutables:value:$immutablesVersion")
 	testAnnotationProcessor("org.immutables:value:$immutablesVersion")
+	testCompileOnly("com.google.auto.value:auto-value-annotations:${autoValueVersion}")
+	testAnnotationProcessor("com.google.auto.value:auto-value:${autoValueVersion}")
 }
