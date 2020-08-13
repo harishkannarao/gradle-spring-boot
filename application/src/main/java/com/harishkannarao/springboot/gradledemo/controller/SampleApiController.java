@@ -14,7 +14,7 @@ public class SampleApiController {
     @GetMapping(path = {""}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<SampleResponseDto> getSampleResponse() {
         SampleResponseDto entity = SampleResponseDto.builder()
-                .setMessage("My Sample Api Message")
+                .message("My Sample Api Message")
                 .build();
         return ResponseEntity.ok().body(entity);
     }
