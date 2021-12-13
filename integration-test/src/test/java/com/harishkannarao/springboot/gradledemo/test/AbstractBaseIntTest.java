@@ -10,6 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.util.SocketUtils;
 
 @SpringBootTest(
         webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT
@@ -18,6 +21,12 @@ import org.springframework.test.context.ActiveProfiles;
 public abstract class AbstractBaseIntTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractBaseIntTest.class);
+    private static final int RANDOM_SERVER_PORT = SocketUtils.findAvailableTcpPort();
+
+    @DynamicPropertySource
+    static void registerTestProperties(DynamicPropertyRegistry registry) {
+        registry.add("server.port", () -> String.valueOf(RANDOM_SERVER_PORT));
+    }
 
     @Value("${test.application.url}")
     private String testApplicationUrl;
