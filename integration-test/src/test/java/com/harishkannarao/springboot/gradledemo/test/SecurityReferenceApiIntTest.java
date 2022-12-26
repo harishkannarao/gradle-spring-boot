@@ -42,7 +42,7 @@ public class SecurityReferenceApiIntTest extends AbstractBaseIntTest {
                 .get("");
 
         assertThat(response.statusCode(), equalTo(401));
-        assertThat(response.jsonPath().getString("message"), equalTo("Authentication required"));
+        assertThat(response.jsonPath().getString("path"), equalTo("/test/api/reference/security"));
     }
 
     @Test
@@ -51,6 +51,6 @@ public class SecurityReferenceApiIntTest extends AbstractBaseIntTest {
                 .get("invalid_token", "");
 
         assertThat(response.statusCode(), equalTo(403));
-        assertThat(response.jsonPath().getString("message"), equalTo("Operation not permitted"));
+        assertThat(response.jsonPath().getString("path"), equalTo("/test/api/reference/security"));
     }
 }

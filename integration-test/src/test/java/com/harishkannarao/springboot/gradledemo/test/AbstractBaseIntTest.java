@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.util.TestSocketUtils;
 import org.springframework.util.SocketUtils;
 
 @SpringBootTest(
@@ -21,7 +22,7 @@ import org.springframework.util.SocketUtils;
 public abstract class AbstractBaseIntTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractBaseIntTest.class);
-    private static final int RANDOM_SERVER_PORT = SocketUtils.findAvailableTcpPort();
+    private static final int RANDOM_SERVER_PORT = TestSocketUtils.findAvailableTcpPort();
 
     @DynamicPropertySource
     static void registerTestProperties(DynamicPropertyRegistry registry) {

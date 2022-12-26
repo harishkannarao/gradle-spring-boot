@@ -4,6 +4,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
     testImplementation("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
     testImplementation("org.springframework.boot:spring-boot-starter-thymeleaf:$springBootVersion")
+    testImplementation("org.springframework.boot:spring-boot-starter-validation:$springBootVersion")
     testImplementation("net.rakugakibox.spring.boot:logback-access-spring-boot-starter:$logbackAccessVersion")
     testImplementation("org.springdoc:springdoc-openapi-ui:$springDocVersion")
 
