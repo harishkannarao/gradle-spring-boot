@@ -5,30 +5,13 @@ import com.harishkannarao.springboot.gradledemo.common.api.client.SwaggerUiClien
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-class SwaggerOpenApiIntTest extends AbstractBaseFeatureToggleIntTest {
-
-	@Test
-	void verify_open_api_and_swagger_ui_are_enabled() {
-		Response openApiResponse = new OpenApiClient(createRequestSpec()).getOpenApi();
-		Response swaggerUiResponse = new SwaggerUiClient(createRequestSpec()).getSwaggerUi();
-
-		assertThat(openApiResponse.statusCode(), equalTo(200));
-		assertThat(swaggerUiResponse.statusCode(), equalTo(200));
-	}
+class SwaggerOpenApiDisabledIntTest extends AbstractFeatureToggleIntTest {
 
 	@Test
 	void verify_open_api_and_swagger_ui_are_disabled() {
-		restartWithProperties(
-				List.of(
-						"springdoc.api-docs.enabled=false"
-				)
-		);
-
 		Response openApiResponse = new OpenApiClient(createRequestSpec()).getOpenApi();
 		Response swaggerUiResponse = new SwaggerUiClient(createRequestSpec()).getSwaggerUi();
 

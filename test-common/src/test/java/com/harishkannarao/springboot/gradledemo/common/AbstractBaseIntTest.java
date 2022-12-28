@@ -1,4 +1,4 @@
-package com.harishkannarao.springboot.gradledemo.test;
+package com.harishkannarao.springboot.gradledemo.common;
 
 import com.harishkannarao.springboot.gradledemo.common.restassured.RestAssuredFactory;
 import io.restassured.specification.RequestSpecification;
@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.util.TestSocketUtils;
@@ -17,7 +16,6 @@ import org.springframework.test.util.TestSocketUtils;
 @SpringBootTest(
         webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT
 )
-@ActiveProfiles(profiles = {"local","integration-test"})
 public abstract class AbstractBaseIntTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractBaseIntTest.class);

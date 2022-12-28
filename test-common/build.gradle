@@ -4,7 +4,9 @@ dependencies {
     testImplementation(project(":application").sourceSets.main.output)
 
     testImplementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
-
+    testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion") {
+        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+    }
     testCompileOnly("org.immutables:value:$immutablesVersion")
     testAnnotationProcessor("org.immutables:value:$immutablesVersion")
     testImplementation("io.rest-assured:rest-assured:$restAssuredVersion") {

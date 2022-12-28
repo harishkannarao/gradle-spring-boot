@@ -10,7 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.equalTo;
 
-public class SecurityReferenceApiIntTest extends AbstractBaseIntTest {
+public class SecurityReferenceApiIntTest extends AbstractDefaultProfileIntegrationTest {
 
     @Test
     void returns_success_for_valid_request() {

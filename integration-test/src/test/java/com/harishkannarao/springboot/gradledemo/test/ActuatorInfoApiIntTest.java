@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-class ActuatorInfoApiIntTest extends AbstractBaseIntTest {
+class ActuatorInfoApiIntTest extends AbstractDefaultProfileIntegrationTest {
 
 	@Test
 	void verify_actuator_info_api() {

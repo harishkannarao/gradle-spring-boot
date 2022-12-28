@@ -10,7 +10,7 @@ import static io.restassured.path.xml.XmlPath.CompatibilityMode.HTML;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-class SampleWebPageIntTest extends AbstractBaseIntTest {
+class SampleWebPageIntTest extends AbstractDefaultProfileIntegrationTest {
 
 	@Test
 	void verify_sample_web_page() {

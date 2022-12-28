@@ -9,7 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 
-class SampleApiIntTest extends AbstractBaseIntTest {
+class SampleApiIntTest extends AbstractDefaultProfileIntegrationTest {
 
 	@Test
 	void verify_sample_api() {

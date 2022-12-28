@@ -9,7 +9,7 @@ import static io.restassured.path.xml.XmlPath.CompatibilityMode.HTML;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-class StaticHtmlPageIntTest extends AbstractBaseIntTest {
+class StaticHtmlPageIntTest extends AbstractDefaultProfileIntegrationTest {
 
 	@Test
 	void verify_static_html_page() {

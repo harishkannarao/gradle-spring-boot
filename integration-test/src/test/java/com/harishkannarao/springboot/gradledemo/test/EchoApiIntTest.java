@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-class EchoApiIntTest extends AbstractBaseIntTest {
+class EchoApiIntTest extends AbstractDefaultProfileIntegrationTest {
 
 	@Test
 	void verify_echo_api() {
