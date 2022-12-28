@@ -1,7 +1,8 @@
 plugins {
 	id "java"
-	id "org.springframework.boot" apply false
-	id "com.gorylenko.gradle-git-properties" apply false
+	id "java-test-fixtures"
+	id "org.springframework.boot"
+	id "com.gorylenko.gradle-git-properties"
 }
 
 group = "com.harishkannarao.springboot"
@@ -9,19 +10,152 @@ version = ""
 java.sourceCompatibility = JavaVersion.toVersion("$javaVersion")
 java.targetCompatibility = JavaVersion.toVersion("$javaVersion")
 
-allprojects {
-	apply plugin: "java"
+repositories {
+	mavenCentral()
+}
 
-	repositories {
-		mavenCentral()
+bootJar {
+	enabled(true)
+	classifier("")
+}
+
+gitProperties {
+	keys = ["git.commit.id","git.commit.time"]
+}
+
+jar {
+	enabled(false)
+}
+
+dependencies {
+	// application dependencies
+	implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+	implementation("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
+	implementation("org.springframework.boot:spring-boot-starter-thymeleaf:$springBootVersion")
+	implementation("org.springframework.boot:spring-boot-starter-validation:$springBootVersion")
+	implementation("net.rakugakibox.spring.boot:logback-access-spring-boot-starter:$logbackAccessVersion")
+	implementation("org.springdoc:springdoc-openapi-ui:$springDocVersion")
+	compileOnly("org.immutables:value:$immutablesVersion")
+	annotationProcessor("org.immutables:value:$immutablesVersion")
+
+	// testFixtures dependencies
+	testFixturesImplementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+
+	testFixturesCompileOnly("org.immutables:value:$immutablesVersion")
+	testFixturesAnnotationProcessor("org.immutables:value:$immutablesVersion")
+	testFixturesImplementation("io.rest-assured:rest-assured:$restAssuredVersion") {
+		exclude group: "com.sun.xml.bind", module: "jaxb-osgi"
 	}
+	testFixturesImplementation("com.github.dzieciou.testing:curl-logger:$restAssuredCurlLoggerVersion") {
+		exclude module: 'slf4j-api'
+	}
+	testFixturesImplementation("ch.qos.logback:logback-classic:$logbackVersion")
 
-	test {
-		useJUnitPlatform()
+	testImplementation(testFixtures(project))
+	testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion") {
+		exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+	}
+	testCompileOnly("org.immutables:value:$immutablesVersion")
+	testAnnotationProcessor("org.immutables:value:$immutablesVersion")
+}
 
-		systemProperties = System.properties.stringPropertyNames().collectEntries {
-			[(it): System.getProperty(it)]
+testing {
+	suites {
+		test {
 		}
+
+		integrationTest(JvmTestSuite) {
+			dependencies {
+				implementation project()
+				implementation testFixtures(project())
+
+				// external test dependencies
+				implementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion") {
+					exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+				}
+				compileOnly("org.immutables:value:$immutablesVersion")
+				annotationProcessor("org.immutables:value:$immutablesVersion")
+				implementation("io.rest-assured:rest-assured:$restAssuredVersion") {
+					exclude group: "com.sun.xml.bind", module: "jaxb-osgi"
+				}
+				implementation("com.github.dzieciou.testing:curl-logger:$restAssuredCurlLoggerVersion") {
+					exclude module: 'slf4j-api'
+				}
+				implementation("ch.qos.logback:logback-classic:$logbackVersion")
+			}
+
+			targets {
+				all {
+					testTask.configure {
+						mustRunAfter(test)
+					}
+				}
+			}
+		}
+
+		ftIntegrationTest(JvmTestSuite) {
+			dependencies {
+				implementation project()
+				implementation(testFixtures(project()))
+
+				// external test dependencies
+				implementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion") {
+					exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+				}
+				compileOnly("org.immutables:value:$immutablesVersion")
+				annotationProcessor("org.immutables:value:$immutablesVersion")
+				implementation("io.rest-assured:rest-assured:$restAssuredVersion") {
+					exclude group: "com.sun.xml.bind", module: "jaxb-osgi"
+				}
+				implementation("com.github.dzieciou.testing:curl-logger:$restAssuredCurlLoggerVersion") {
+					exclude module: 'slf4j-api'
+				}
+				implementation("ch.qos.logback:logback-classic:$logbackVersion")
+			}
+
+			targets {
+				all {
+					testTask.configure {
+						mustRunAfter(integrationTest)
+					}
+				}
+			}
+		}
+
+		qaAcceptanceTest(JvmTestSuite) {
+			dependencies {
+				implementation project()
+				implementation(testFixtures(project()))
+
+				// external test dependencies
+				implementation("org.junit.jupiter:junit-jupiter-api:$junit5Version")
+				runtimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
+				compileOnly("org.immutables:value:$immutablesVersion")
+				annotationProcessor("org.immutables:value:$immutablesVersion")
+				implementation("org.hamcrest:hamcrest:$hamcrestVersion")
+				implementation("io.rest-assured:rest-assured:$restAssuredVersion") {
+					exclude group: "com.sun.xml.bind", module: "jaxb-osgi"
+				}
+				implementation("com.github.dzieciou.testing:curl-logger:$restAssuredCurlLoggerVersion") {
+					exclude module: 'slf4j-api'
+				}
+				implementation("ch.qos.logback:logback-classic:$logbackVersion")
+				implementation("ch.qos.logback:logback-core:$logbackVersion")
+				implementation("org.slf4j:slf4j-api:$slf4jVersion")
+			}
+		}
+	}
+}
+
+tasks.named('check') {
+	dependsOn(testing.suites.integrationTest, testing.suites.ftIntegrationTest)
+}
+
+test {
+	useJUnitPlatform()
+
+	systemProperties = System.properties.stringPropertyNames().collectEntries {
+		[(it): System.getProperty(it)]
 	}
 }
 
