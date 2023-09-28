@@ -6,6 +6,14 @@ spring:
     banner-mode: "off"
   profiles:
     active: "local"
+  web:
+    resources:
+      static-locations:
+        - classpath:/META-INF/resources/
+        - classpath:/resources/
+        - classpath:/static/
+        - classpath:/public/
+        - ${ADDITIONAL_STATIC_LOCATION:classpath:/additional-static/} # can be set to file:/opt/static/ for serving contents outside of jar
 
 springdoc:
   api-docs:
